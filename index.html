@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body onload="Register()">
+   
+    <div class="background-img">
+        <div class="form">
+            <div class="button-box">
+              LOGIN PAGE:
+            </div>
+            
+        
+        <form id="Register" class="input-group">
+            <p> <input type="text" class="input-field" placeholder="NAME" required id="txtNAME"></p>
+            <p><input type="email" class="input-field" placeholder="Email id" required id="txtEmail"></p>
+            <p><input type="text" class="input-field" placeholder="Enter Password" required id="pw"></p>
+           <input type="button" id ="btnSetCookie"class= "btn" value="Set Cookie" onclick = "setCookie()"/>
+           <input type="button" id ="btnGetCookie"class= "btn"value="Get Cookie" onclick = "getCookie()"/> 
+        
+         <p>  <input type="button"id="btnClear"class= "btn" value="CLEAR" onclick = "Clear()"/> 
+           <input type="button"id ="btnDelete" class= "btn"value="Delete Cookies" onclick = " DeleteCookies()"/></p>
+            
+    </div>
+    <script>
+        var y = document.getElementById("Register");
+   
+        function Register(){
+            
+            y.style.left = "60px";
+            z.style.left = "110px";
+        } 
+   
+        function setCookie() {
+       document.cookie = "Name=" + document.getElementById("txtNAME").value;
+       document.cookie = "email=" + document.getElementById("txtEmail").value;
+       document.cookie = "Password=" + document.getElementById("pw").value;
+       alert("Cookies Set")
+       
+       }
+       
+       function getCookie() 
+       {
+       if (document.cookie.length != 0) 
+       {
+           var cookiesArray1 = document.cookie.split("; ");
+           for (var i = 0; i<=cookiesArray1.length; i++) 
+           {
+               var nameValueArray = cookiesArray1[i].split("=");
+                if (nameValueArray[0] == "Name") 
+               {
+                   document.getElementById("txtNAME").value = nameValueArray[1];
+               }
+               else if (nameValueArray[0] == "email") 
+               {
+                   document.getElementById("txtEmail").value = nameValueArray[1];
+               }
+               else if (nameValueArray[0] == "Password") 
+               {
+                   document.getElementById("pw").value = nameValueArray[1];
+               }
+           }
+       }
+       else 
+       {
+           alert("No cookies found");
+       }
+       }
+       function Clear(){
+           document.getElementById("txtNAME").value = "";
+           document.getElementById("txtEmail").value = "";
+           document.getElementById("pw").value = "";
+       }
+       
+       function DeleteCookies(){
+
+           document.getElementById("txtNAME").value = "";
+           document.getElementById("txtEmail").value = "";
+           document.getElementById("pw").value = "" ;
+                       var cookies = document.cookie.split(";");
+       
+       for (var i = 0; i < cookies.length; i++) {
+           var cookie = cookies[i];
+           var index = cookie.indexOf("=");
+           var name = index > -1 ? cookie.substr(0, index) : cookie;
+           document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+       }
+       
+       alert("Cookies Deleted Successfull");}
+       
+                   
+         
+    
+       
+       </script>
